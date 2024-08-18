@@ -4,12 +4,12 @@ import {useState} from 'react'
 import {isMobile} from '@bozzhik/is-mobile'
 
 import Image from 'next/image'
-import Button from '../ui/Button'
+import Button from '#/UI/Button'
 
 interface CardData {
-  image: string | StaticImageData
-  hoverImage: string | StaticImageData
-  mobileImage: string | StaticImageData
+  image: string
+  hoverImage: string
+  mobileImage: string
 }
 
 const cardsData: CardData[] = Array.from({length: 3}, (_, index) => ({
@@ -18,17 +18,10 @@ const cardsData: CardData[] = Array.from({length: 3}, (_, index) => ({
   mobileImage: require(`%/about/${index + 1}_mobile.webp`).default,
 }))
 
-interface StaticImageData {
-  src: string
-  height: number
-  width: number
-  blurDataURL?: string
-}
-
 interface CardProps {
-  image: string | StaticImageData
-  hoverImage: string | StaticImageData
-  mobileImage: string | StaticImageData
+  image: string
+  hoverImage: string
+  mobileImage: string
   isLastCard?: boolean
 }
 

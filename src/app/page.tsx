@@ -1,9 +1,9 @@
-import Hero from '@/components/index/Hero'
-import About from '@/components/index/About'
-import Gallery from '@/components/index/Gallery'
-import Schema from '@/components/index/Schema'
-import Prices from '@/components/index/Prices'
-import Contacts from '@/components/index/Contacts'
+import Hero from '##/Hero'
+import About from '##/About'
+import Gallery from '##/Gallery'
+import Schema from '##/Schema'
+import Prices from '##/Prices'
+import Contacts from '##/Contacts'
 
 import Footer from '#/Global/Footer'
 

@@ -1,7 +1,6 @@
 'use client'
 
 import {isMobile} from '@bozzhik/is-mobile'
-
 // const isMobile = true
 
 import {useState, useRef, useEffect} from 'react'
@@ -9,11 +8,10 @@ import {useState, useRef, useEffect} from 'react'
 import {motion} from 'framer-motion'
 
 import Image from 'next/image'
-import Button from '../ui/Button'
-import SchemaSVG from './SchemaSVG'
+import Button from '#/UI/Button'
+import SchemaSVG from '#/index/SchemaSVG'
 
 import crossIcon from '%/schema/cross-icon.svg'
-
 import fieldsImage from '%/schema/fields.webp'
 import parkingImage from '%/schema/parking.webp'
 import gymnastImage from '%/schema/gymnast.webp'
