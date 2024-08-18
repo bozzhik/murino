@@ -5,14 +5,7 @@ import {isMobile} from '@bozzhik/is-mobile'
 
 import Link from 'next/link'
 
-interface HeaderLinkProps {
-  link: string
-  active?: boolean
-  children: React.ReactNode
-  classes?: string
-}
-
-function HeaderLink({link, active, classes, children}: HeaderLinkProps) {
+function HeaderLink({link, active, classes, children}: {link: string; active?: boolean; children: React.ReactNode; classes?: string}) {
   return (
     <Link href={link} className={`text-[22px] xl:text-lg px-8 py-3 xl:px-6 xl:py-2 rounded-large ${active ? 'text-white !bg-custom-green duration-200' : ''} ${classes}`}>
       {children}

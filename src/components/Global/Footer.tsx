@@ -1,5 +1,4 @@
 import Link from 'next/link'
-
 import {linksData} from '@/lib/data'
 
 export default function Footer() {
