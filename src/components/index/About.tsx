@@ -13,9 +13,9 @@ interface CardData {
 }
 
 const cardsData: CardData[] = Array.from({length: 3}, (_, index) => ({
-  image: require(`@/assets/index/about/${index + 1}.webp`).default,
-  hoverImage: require(`@/assets/index/about/${index + 1}_hover.webp`).default,
-  mobileImage: require(`@/assets/index/about/${index + 1}_mobile.webp`).default,
+  image: require(`%/about/${index + 1}.webp`).default,
+  hoverImage: require(`%/about/${index + 1}_hover.webp`).default,
+  mobileImage: require(`%/about/${index + 1}_mobile.webp`).default,
 }))
 
 interface StaticImageData {

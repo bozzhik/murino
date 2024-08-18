@@ -2,49 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '../assets/stylesheets/animation-click.css';
+@import '../assets/stylesheets/swiper.css';
+
 @font-face {
   font-family: 'BebasNeue';
-  src: url('../app/fonts/BebasNeueCyrillic.woff2') format('woff2');
+  src: url('../assets/fonts/BebasNeueCyrillic.woff2') format('woff2');
   font-style: normal;
-}
-
-.title-span {
-  @apply underline text-custom-95 underline-offset-8 decoration-4 sm:underline-offset-2;
-}
-
-.animation-click {
-  @apply text-custom-gray;
-  animation: click 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes click {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* swiper customization */
-
-.swiper-scrollbar {
-  @apply !bg-white/30 sm:hidden;
-}
-
-.swiper-scrollbar-drag {
-  @apply !bg-white;
-}
-
-.swiper-pagination {
-  @apply hidden sm:block;
-}
-
-.swiper-pagination-bullet {
-  @apply !bg-white !opacity-50;
-}
-
-.swiper-pagination-bullet-active {
-  @apply !opacity-100;
 }

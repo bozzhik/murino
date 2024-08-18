@@ -12,13 +12,13 @@ import Image from 'next/image'
 import Button from '../ui/Button'
 import SchemaSVG from './SchemaSVG'
 
-import crossIcon from '../../assets/index/cross.svg'
+import crossIcon from '%/schema/cross-icon.svg'
 
-import fieldsImage from '../../assets/index/schema/fields.webp'
-import parkingImage from '../../assets/index/schema/parking.webp'
-import gymnastImage from '../../assets/index/schema/gymnast.webp'
-import toiletsImage from '../../assets/index/schema/toilets.webp'
-import showersImage from '../../assets/index/schema/showers.webp'
+import fieldsImage from '%/schema/fields.webp'
+import parkingImage from '%/schema/parking.webp'
+import gymnastImage from '%/schema/gymnast.webp'
+import toiletsImage from '%/schema/toilets.webp'
+import showersImage from '%/schema/showers.webp'
 
 const contentData = {
   fields: {image: fieldsImage, text: 'Поля с высококачественным новым искусственным покрытием <br /> <span class="text-neutral-400">(поле 40x70 и 3 поля 20х40)</span>'},

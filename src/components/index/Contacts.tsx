@@ -6,10 +6,10 @@ import {isMobile} from '@bozzhik/is-mobile'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import VkImage from '../../assets/index/socials/vk.svg'
-import TgImage from '../../assets/index/socials/tg.svg'
-import CopyImage from '../../assets/index/contacts/copy.svg'
-import MapImage from '../../assets/index/contacts/map.svg'
+import VkImage from '%/socials/vk.svg'
+import TgImage from '%/socials/tg.svg'
+import CopyImage from '%/contacts/copy.svg'
+import MapImage from '%/contacts/map.svg'
 
 import {linksData} from '@/lib/data'
 
