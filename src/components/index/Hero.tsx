@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Header from '../ui/Header/Header'
-import Button from '../ui/Button'
+import Header from '#/Global/Header/Header'
+import Button from '#/UI/Button'
 
-import HeroBackground from '../../assets/index/hero-background.webp'
-import HeroText from '../../assets/index/hero-text.svg'
+import HeroBackground from '%/hero/background.webp'
+import HeroText from '%/hero/text.svg'
 
-import TelImage from '../../assets/index/socials/tel.svg'
-import VkImage from '../../assets/index/socials/vk.svg'
-import TgImage from '../../assets/index/socials/tg.svg'
+import TelImage from '%/socials/tel.svg'
+import VkImage from '%/socials/vk.svg'
+import TgImage from '%/socials/tg.svg'
 
 import {linksData} from '@/lib/data'
 
@@ -31,7 +31,7 @@ function HeroSocials() {
   )
 }
 
-const screenHeight = 'h-[100vh]'
+const screenHeight = 'h-[100vh] h-[100svh]'
 
 export default function Hero() {
   return (

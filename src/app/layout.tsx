@@ -5,19 +5,19 @@ import localFont from 'next/font/local'
 const SuisseIntl = localFont({
   src: [
     {
-      path: './fonts/SuisseIntl-Regular.woff2',
+      path: '../assets/fonts/SuisseIntl-Regular.woff2',
       weight: '400',
     },
     {
-      path: './fonts/SuisseIntl-Book.woff2',
+      path: '../assets/fonts/SuisseIntl-Book.woff2',
       weight: '450',
     },
     {
-      path: './fonts/SuisseIntl-Medium.woff2',
+      path: '../assets/fonts/SuisseIntl-Medium.woff2',
       weight: '500',
     },
     {
-      path: './fonts/SuisseIntl-SemiBold.woff2',
+      path: '../assets/fonts/SuisseIntl-SemiBold.woff2',
       weight: '600',
     },
   ],
@@ -39,11 +39,11 @@ export const metadata: Metadata = {
     title: 'МУРИНО АРЕНА',
     description: 'Мурино Арена — один из самых масштабных футбольных шатров в Санкт-Петербурге и Ленинградской области!',
     siteName: 'МУРИНО АРЕНА',
-    images: 'https://murino-arena.ru/og.png',
+    images: 'https://murino-arena.ru/og.jpg',
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     noarchive: true,
     nosnippet: true,
     noimageindex: true,

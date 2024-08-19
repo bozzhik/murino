@@ -2,8 +2,7 @@
 
 import {useState} from 'react'
 
-import Button from '../ui/Button'
-import {buttonStyles} from '../ui/Button'
+import Button, {buttonStyles} from '#/UI/Button'
 
 interface FieldButton {
   fieldSize: string
