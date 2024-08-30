@@ -1,9 +1,9 @@
-import Hero from '##/Hero'
-import About from '##/About'
-import Gallery from '##/Gallery'
-import Schema from '##/Schema'
-import Prices from '##/Prices'
-import Contacts from '##/Contacts'
+import Hero from '##/index/Hero'
+import About from '##/index/About'
+import Gallery from '##/index/Gallery'
+import Schema from '##/index/Schema'
+import Prices from '##/index/Prices'
+import Contacts from '##/index/Contacts'
 
 import Footer from '#/Global/Footer'
 

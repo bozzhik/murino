@@ -9,7 +9,7 @@ import {motion} from 'framer-motion'
 
 import Image from 'next/image'
 import Button from '#/UI/Button'
-import SchemaSVG from '#/index/SchemaSVG'
+import SchemaSVG from '##/index/SchemaSVG'
 
 import crossIcon from '%/schema/cross-icon.svg'
 import fieldsImage from '%/schema/fields.webp'
