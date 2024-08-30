@@ -4,12 +4,11 @@ import Gallery from '##/index/Gallery'
 import Schema from '##/index/Schema'
 import Prices from '##/index/Prices'
 import Contacts from '##/index/Contacts'
-
 import Footer from '#/Global/Footer'
 
 export default function Index() {
   return (
-    <div>
+    <>
       <Hero />
       <About />
       <Gallery />
@@ -17,6 +16,6 @@ export default function Index() {
       <Prices />
       <Contacts />
       <Footer />
-    </div>
+    </>
   )
 }
