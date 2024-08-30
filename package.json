@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@bozzhik/is-mobile": "^0.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "framer-motion": "^11.0.3",
+    "lucide-react": "^0.436.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",

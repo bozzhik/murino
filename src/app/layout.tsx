@@ -21,6 +21,7 @@ const SuisseIntl = localFont({
       weight: '600',
     },
   ],
+  variable: '--font-suisseintl',
 })
 
 export const metadata: Metadata = {
@@ -58,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="scroll-smooth">
-      <body className={`${SuisseIntl.className} tracking-tighter`}>{children}</body>
+      <body className={`${SuisseIntl.variable} font-sans tracking-tighter`}>{children}</body>
     </html>
   )
 }
