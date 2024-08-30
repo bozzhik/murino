@@ -1,6 +1,6 @@
 import type {Metadata} from 'next'
-import './globals.css'
 import localFont from 'next/font/local'
+import './globals.css'
 
 const SuisseIntl = localFont({
   src: [
@@ -52,6 +52,8 @@ export const metadata: Metadata = {
   },
 }
 
+import Header from '#/Global/Header/Header'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,7 +61,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="scroll-smooth">
-      <body className={`${SuisseIntl.variable} font-sans tracking-tighter`}>{children}</body>
+      <body className={`${SuisseIntl.variable} font-sans tracking-tighter`}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

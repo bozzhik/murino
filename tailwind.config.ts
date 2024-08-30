@@ -26,6 +26,7 @@ const config = {
           gray: '#454545',
           95: '#959595',
           e4: '#E4E4E4',
+          d4: '#D4D4D4',
         },
       },
       borderRadius: {
