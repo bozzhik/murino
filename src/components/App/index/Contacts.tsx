@@ -39,7 +39,6 @@ const Button = forwardRef<HTMLAnchorElement, ButtonProps>(function ButtonImpl({h
 export default function Contacts() {
   const [copiedText, setCopiedText] = useState(null)
 
-  const [clickAnimation, setClickAnimation] = useState(false)
   const buttonRef = useRef<HTMLAnchorElement>(null)
 
   const handleCopyClick = async (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -66,44 +65,9 @@ export default function Contacts() {
       }
     } catch (error) {
       console.error('Failed to copy text: ', error)
-      alert('неееееееееее скопировано!')
+      alert('Не скопировано!')
     }
   }
-
-  useEffect(() => {
-    const buttonRefCopy = buttonRef.current
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          const clickTimeout = setTimeout(() => {
-            setClickAnimation(true)
-
-            const removeClickTimeout = setTimeout(() => {
-              setClickAnimation(false)
-            }, 2000)
-
-            return () => clearTimeout(removeClickTimeout)
-          }, 1000)
-
-          return () => clearTimeout(clickTimeout)
-        }
-      },
-      {
-        threshold: 0.5,
-      },
-    )
-
-    if (buttonRefCopy) {
-      observer.observe(buttonRefCopy)
-    }
-
-    return () => {
-      if (buttonRefCopy) {
-        observer.unobserve(buttonRefCopy)
-      }
-    }
-  }, [])
 
   return (
     <section id="contacts" className="my-28 xl:my-20 sm:my-14">
@@ -119,7 +83,7 @@ export default function Contacts() {
             </h1>
 
             <div className="flex flex-col gap-8 sm:gap-2 text-[38px] xl:text-3xl sm:text-xl text-center uppercase">
-              <Button ref={buttonRef} target="" href={linksData.tel.href} className={`${buttonStyles.default} ${buttonStyles.light} ${clickAnimation ? 'animation-click' : ''}`}>
+              <Button ref={buttonRef} target="" href={linksData.tel.href} className={`${buttonStyles.default} ${buttonStyles.light}`}>
                 {linksData.tel.text}
               </Button>
 

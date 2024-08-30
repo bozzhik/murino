@@ -2,5 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../assets/stylesheets/animation-click.css';
 @import '../assets/stylesheets/swiper.css';
