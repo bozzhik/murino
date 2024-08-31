@@ -1,0 +1,7 @@
+.HOVERABLE_AREA {
+  @apply duration-300 group-hover:fill-[#E8FDE0];
+}
+
+.HOVERABLE_FIELD_ZONE {
+  @apply fill-[#D9D9D9] group-hover:fill-custom-green/50 duration-300;
+}

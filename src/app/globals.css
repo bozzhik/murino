@@ -2,11 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../assets/stylesheets/animation-click.css';
 @import '../assets/stylesheets/swiper.css';
-
-@font-face {
-  font-family: 'BebasNeue';
-  src: url('../assets/fonts/BebasNeueCyrillic.woff2') format('woff2');
-  font-style: normal;
-}
+@import '../assets/stylesheets/schema.css';

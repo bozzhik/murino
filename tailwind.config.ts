@@ -1,16 +1,21 @@
-const plugin = require('tailwindcss/plugin')
-
 import type {Config} from 'tailwindcss'
+const plugin = require('tailwindcss/plugin')
+import {fontFamily} from 'tailwindcss/defaultTheme'
 
-const config: Config = {
-  mode: 'jit',
-  content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
+const config = {
+  darkMode: ['class'],
+  content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   prefix: '',
   theme: {
+    screens: {
+      xl: {max: '1536px'},
+      lg: {max: '1024px'},
+      sm: {max: '768px'},
+      xs: {max: '350px'},
+    },
     extend: {
       fontFamily: {
-        sans: ['var(--font-opensans)', 'ui-sans-serif', 'system-ui', '-apple-system', 'Roboto', 'sans-serif'],
-        bebas: ['BebasNeue', 'ui-sans-serif', 'system-ui', '-apple-system', 'Roboto', 'sans-serif'],
+        sans: ['var(--font-suisseintl)', ...fontFamily.sans],
       },
       fontWeight: {
         book: '450',
@@ -18,10 +23,10 @@ const config: Config = {
       colors: {
         custom: {
           green: '#387A22',
-          'green-hov': '#E8FDE0',
           gray: '#454545',
           95: '#959595',
           e4: '#E4E4E4',
+          d4: '#D4D4D4',
         },
       },
       borderRadius: {
@@ -35,12 +40,20 @@ const config: Config = {
         base: '0px 0px 10px rgba(0, 0, 0, 0.25)',
         card: '0px 4px 20px rgba(0, 0, 0, 0.25)',
       },
-    },
-    screens: {
-      xl: {max: '1536px'},
-      lg: {max: '1024px'},
-      sm: {max: '768px'},
-      xs: {max: '350px'},
+      keyframes: {
+        'accordion-down': {
+          from: {height: '0'},
+          to: {height: 'var(--radix-accordion-content-height)'},
+        },
+        'accordion-up': {
+          from: {height: 'var(--radix-accordion-content-height)'},
+          to: {height: '0'},
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
     },
   },
   plugins: [
@@ -49,6 +62,6 @@ const config: Config = {
       api.matchUtilities({s: (value) => ({width: value, height: value})}, {values: api.theme('width')})
     }),
   ],
-}
+} satisfies Config
 
 export default config

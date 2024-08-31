@@ -4,14 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "explorer http://localhost:2000 & next dev -p 2000",
+    "dev:host": "explorer http://192.168.0.16:2000 & next dev -p 2000 -H 192.168.0.16",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@bozzhik/is-mobile": "^0.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "framer-motion": "^11.0.3",
-    "next": "14.0.4",
+    "lucide-react": "^0.436.0",
+    "next": "14.2.7",
     "react": "^18",
     "react-dom": "^18",
     "swiper": "^11.0.5",

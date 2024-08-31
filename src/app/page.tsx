@@ -1,22 +1,25 @@
-import Hero from '##/Hero'
-import About from '##/About'
-import Gallery from '##/Gallery'
-import Schema from '##/Schema'
-import Prices from '##/Prices'
-import Contacts from '##/Contacts'
+import {cn} from '@/lib/utils'
 
-import Footer from '#/Global/Footer'
+import Hero from '##/index/Hero'
+import About from '##/index/About'
+import Gallery from '##/index/Gallery'
+import Schema from '##/index/Schema'
+import Prices from '##/index/Prices'
+import Contacts from '##/index/Contacts'
+import Footer from '##/index/Footer'
 
 export default function Index() {
   return (
-    <div>
+    <>
       <Hero />
-      <About />
-      <Gallery />
-      <Schema />
-      <Prices />
-      <Contacts />
-      <Footer />
-    </div>
+      <main className={cn('mx-3', 'mt-20 xl:mt-14 sm:mt-10', 'space-y-20 xl:space-y-14 sm:space-y-10')}>
+        <About />
+        <Gallery />
+        <Schema />
+        <Prices />
+        <Contacts />
+        <Footer />
+      </main>
+    </>
   )
 }
