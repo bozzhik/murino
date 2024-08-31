@@ -14,7 +14,7 @@ export default function Header() {
         </span>
       </div>
 
-      <HeaderSwitch className="right-16 sm:right-6" />
+      <HeaderSwitch className="right-16 sm:right-3" />
     </header>
   )
 }

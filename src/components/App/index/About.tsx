@@ -30,10 +30,10 @@ const Card = ({image, hoverImage, mobileImage, isLastCard = false}) => {
 
 export default function About() {
   return (
-    <section data-section="about-index" id="about" className="space-y-10 xl:space-y-7 sm:space-y-5">
+    <section data-section="about-index" id="about" className={cn('scroll-m-10', 'space-y-10 xl:space-y-7 sm:space-y-5')}>
       <div className={cn(buttonVariants.base, 'bg-custom-green text-white rounded-smallest sm:py-4', 'w-[60%] mx-auto sm:w-auto sm:mx-3')}>Почему нас выбирают?</div>
 
-      <div className="flex flex-col mx-3 gap-10 xl:gap-7 sm:gap-3.5">
+      <div className="flex flex-col gap-10 xl:gap-7 sm:gap-3.5">
         <div className="grid justify-between grid-cols-2 sm:grid-cols-1 gap-10 xl:gap-7 sm:gap-3.5">
           {cardsData.slice(0, 2).map((card, index) => (
             <Card key={index} {...card} />

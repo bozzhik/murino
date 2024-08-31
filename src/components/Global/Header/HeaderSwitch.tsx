@@ -7,10 +7,10 @@ import {isMobile} from '@bozzhik/is-mobile'
 import Link from 'next/link'
 
 const links = [
-  {title: 'О нас', link: '#about-us', mobile: false},
+  {title: 'О нас', link: '#about', mobile: false},
   {title: 'Цены', link: '#prices', mobile: true},
   {title: 'Контакты', link: '#contacts', mobile: false},
-  {title: 'Забронировать', link: '#contacts', mobile: false},
+  {title: 'Забронировать', link: '#prices', mobile: false},
 ]
 
 function HeaderLink({link, active, className, children}: {link: string; active?: boolean; children: React.ReactNode; className?: string}) {
