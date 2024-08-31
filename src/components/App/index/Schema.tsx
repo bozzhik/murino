@@ -2,14 +2,14 @@
 
 import {cn} from '@/lib/utils'
 import {isMobile} from '@bozzhik/is-mobile'
-import {useState, useRef, useEffect} from 'react'
+import {useState, useRef} from 'react'
 import {motion} from 'framer-motion'
+import {X} from 'lucide-react'
 
-import {buttonVariants} from '#/UI/Button'
-import SchemaSVG from '##/index/SchemaSVG'
 import Image from 'next/image'
+import Heading from '#/UI/Heading'
+import SchemaSVG from '##/index/SchemaSVG'
 
-import crossIcon from '%/schema/cross-icon.svg'
 import fieldsImage from '%/schema/fields.webp'
 import parkingImage from '%/schema/parking.webp'
 import gymnastImage from '%/schema/gymnast.webp'
@@ -17,29 +17,41 @@ import toiletsImage from '%/schema/toilets.webp'
 import showersImage from '%/schema/showers.webp'
 
 const contentData = {
-  fields: {image: fieldsImage, text: 'Поля с высококачественным новым искусственным покрытием <br /> <span class="text-neutral-400">(поле 40x70 и 3 поля 20х40)</span>'},
-  parking: {image: parkingImage, text: 'Парковка на 300 машиномест'},
+  fields: {image: fieldsImage, text: 'Поля с <span class="text-custom-green">новым</span> искусственным покрытием'},
+  parking: {image: parkingImage, text: 'Парковка на <span class="text-custom-green">300</span> мест'},
   cloakroom: {image: showersImage, text: 'Дополнительная раздевалка'},
-  gymnast: {image: gymnastImage, text: 'Гимнастический зал <span class="text-neutral-400">(скоро будет готов)</span>'},
+  gymnast: {image: gymnastImage, text: 'Гимнастический зал <span class="text-custom-green">(скоро будет готов)</span>'},
   toilets: {image: toiletsImage, text: 'Туалеты'},
-  showers: {image: showersImage, text: '6 раздевалок с душевыми и теплым полом'},
+  showers: {image: showersImage, text: '<span class="text-custom-green">ШЕСТЬ</span> раздевалок с душевыми и теплым полом'},
 }
+
+const spanStyles = 'block text-3xl xl:text-2xl sm:text-lg !leading-tight font-medium tracking-tighter uppercase text-center text-custom-gray'
 
 export default function Schema() {
-  useEffect(() => {
-    const imagesToPreload = [fieldsImage, parkingImage, gymnastImage, toiletsImage, showersImage]
-    imagesToPreload.forEach((image) => {
-      const img = document.createElement('img')
-      img.src = image.src
-    })
-  }, [])
-
-  return !isMobile ? <DesktopSchema /> : <MobileSchema />
+  return (
+    <section data-section="about-index" id="schema" className="space-y-5">
+      <Heading text="Cхема шатра" />
+      {!isMobile ? <DesktopSchema /> : <MobileSchema />}
+    </section>
+  )
 }
+
+const ContentPreview = ({image, label}) => (
+  <>
+    <Image priority={true} loading="eager" quality={100} className="object-cover w-full h-full rounded-smallest sm:rounded-[10px]" src={image} alt={label} />
+    <span className={cn(spanStyles)} dangerouslySetInnerHTML={{__html: label}} />
+  </>
+)
 
 function DesktopSchema() {
   const [hoveredElement, setHoveredElement] = useState(null)
   const hoveredTimeout = useRef(null)
+
+  const gridConfig = {
+    base: 'grid-cols-7',
+    preview: 'col-span-3',
+    schema: 'col-span-4',
+  }
 
   const handleMouseEnter = (elementId) => {
     clearTimeout(hoveredTimeout.current)
@@ -53,15 +65,10 @@ function DesktopSchema() {
     setHoveredElement(null)
   }
 
-  const generateContent = (imageSrc, altText, classes = '') => {
-    const imageStyles = 'w-full h-full object-cover rounded-smallest'
-
+  const PreviewSection = (image, label) => {
     return (
-      <motion.div className={`flex flex-col h-full gap-5 ${classes}`} initial={{opacity: 0}} animate={{opacity: hoveredElement ? 1 : 0}} transition={{duration: 0.25}}>
-        <Image loading={'eager'} quality={100} className={imageStyles} src={imageSrc} alt={altText} />
-        <button className={buttonVariants.base}>
-          <span dangerouslySetInnerHTML={{__html: altText}}></span>
-        </button>
+      <motion.div className="flex flex-col h-full gap-4" initial={{opacity: 0}} animate={{opacity: hoveredElement ? 1 : 0}} transition={{duration: 0.25}}>
+        <ContentPreview image={image} label={label} />
       </motion.div>
     )
   }
@@ -70,46 +77,41 @@ function DesktopSchema() {
     if (hoveredElement) {
       switch (hoveredElement) {
         case 'fields':
-          return generateContent(contentData.fields.image, contentData.fields.text)
+          return PreviewSection(contentData.fields.image, contentData.fields.text)
         case 'parking':
-          return generateContent(contentData.parking.image, contentData.parking.text)
+          return PreviewSection(contentData.parking.image, contentData.parking.text)
         case 'cloakroom':
-          return generateContent(contentData.cloakroom.image, contentData.cloakroom.text)
+          return PreviewSection(contentData.cloakroom.image, contentData.cloakroom.text)
         case 'gymnast':
-          return generateContent(contentData.gymnast.image, contentData.gymnast.text)
+          return PreviewSection(contentData.gymnast.image, contentData.gymnast.text)
         case 'toilets':
-          return generateContent(contentData.toilets.image, contentData.toilets.text)
+          return PreviewSection(contentData.toilets.image, contentData.toilets.text)
         case 'showers':
-          return generateContent(contentData.showers.image, contentData.showers.text)
+          return PreviewSection(contentData.showers.image, contentData.showers.text)
         default:
           return null
       }
     } else {
-      const spanStyles = 'absolute mx-auto z-10 w-[60%] text-2xl font-medium tracking-tighter text-center uppercase duration-200 !leading-[1.15] text-custom-gray xl:text-xl sm:text-lg'
-      const spanText = 'Наведите курсор на&nbsp;одну из&nbsp;секций шатра на&nbsp;схеме'
-
       return (
-        <div className="relative grid w-full h-full place-items-center">
-          <span className={spanStyles} dangerouslySetInnerHTML={{__html: spanText}}></span> {generateContent(fieldsImage, 'Ожидается наведение', 'invisible')}
+        <div className="grid w-full h-full place-items-center">
+          <span className={spanStyles}>
+            Наведите курсор на одну <br /> из секций шатра
+          </span>
         </div>
       )
     }
   }
 
   return (
-    <section id="schema" data-section="desktop" className="pt-10 mt-10 sm:pt-0 sm:sm:mt-14">
-      <div className={cn(buttonVariants.base, 'bg-custom-green text-white rounded-smallest sm:py-4', 'w-1/2 mx-auto sm:w-full sm:mx-3')}>Cхема шатра</div>
+    <div className="p-7 xl:p-5 rounded-small shadow-card">
+      <div className={`grid ${gridConfig.base} gap-5`}>
+        <div className={`grid ${gridConfig.preview} place-items-center p-5 border-[3px] border-custom-gray rounded-small`}>{renderContent()}</div>
 
-      <div className="mx-3 mt-5 shadow-card p-7 rounded-small">
-        <div className="grid grid-cols-7 gap-5">
-          <div className="grid col-span-3 place-items-center border-[3px] border-custom-gray p-5 rounded-small">{renderContent()}</div>
-
-          <div className="grid col-span-4 overflow-hidden shadow-card rounded-small place-items-center p-7">
-            <SchemaSVG platform="desktop" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-          </div>
+        <div className={`grid ${gridConfig.schema} place-items-center p-5 xl:p-7 overflow-hidden shadow-card rounded-small `}>
+          <SchemaSVG platform="desktop" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
@@ -117,52 +119,43 @@ function MobileSchema() {
   const [clickedElement, setClickedElement] = useState(null)
   const [showIntroText, setShowIntroText] = useState(true)
 
-  const generateContent = (imageSrc, altText) => {
-    const imageStyles = 'w-full h-full object-cover rounded-smallest'
+  const PreviewSection = (image, label) => (
+    <div>
+      <button onClick={() => setClickedElement(null)} className="absolute top-0 right-0 p-1.5 m-3.5 bg-white rounded-[10px]" title="close">
+        <X />
+      </button>
 
-    return (
-      <div className="rounded-small">
-        <button onClick={() => setClickedElement(null)} className="absolute top-0 right-0 p-2 m-2 bg-custom-e4 rounded-small" title="button">
-          <Image quality={100} src={crossIcon} className="s-5" alt="" />
-        </button>
-        <Image quality={100} loading={'eager'} className={imageStyles} src={imageSrc} alt={altText} />
-        <h1 className="mt-3 text-center" dangerouslySetInnerHTML={{__html: altText}}></h1>
+      <div className="space-y-3">
+        <ContentPreview image={image} label={label} />
       </div>
-    )
-  }
+    </div>
+  )
 
   const renderContent = () => {
     if (clickedElement) {
       const {image, text} = contentData[clickedElement] || {}
       if (!image || !text) return null
-      return generateContent(image, text)
+      return PreviewSection(image, text)
     }
     return null
   }
 
   const handleMobileTouch = (elementId) => {
     setClickedElement(elementId)
-
-    setTimeout(() => {
-      setShowIntroText(false)
-    }, 2500)
+    setShowIntroText(false)
   }
 
   return (
-    <section id="schema" data-section="mobile" className="pt-10 mt-10 sm:pt-0 sm:mt-12">
-      {showIntroText && (
-        <h1 className="mt-3 text-sm leading-tight text-center text-custom-95 w-[60%] mx-auto">
-          Нажмите на&nbsp;одну из&nbsp;секций <br /> шатра на&nbsp;схеме
-        </h1>
-      )}
-
-      <div className="relative p-4 mx-3 mt-5 shadow-card rounded-small">
-        {renderContent() || (
-          <div>
-            <SchemaSVG platform="mobile" onMobileTouch={handleMobileTouch} />
-          </div>
+    <>
+      <div className="relative p-2 space-y-4 shadow-card rounded-[10px]">
+        {showIntroText && (
+          <h1 className="mt-2 text-sm leading-tight text-center text-custom-95">
+            Нажмите на одну из секций <br /> шатра на схеме
+          </h1>
         )}
+
+        {renderContent() || <SchemaSVG platform="mobile" onMobileTouch={handleMobileTouch} />}
       </div>
-    </section>
+    </>
   )
 }
