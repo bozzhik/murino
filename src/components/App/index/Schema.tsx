@@ -25,7 +25,7 @@ const contentData = {
   showers: {image: showersImage, text: '<span class="text-custom-green">ШЕСТЬ</span> раздевалок с душевыми и теплым полом'},
 }
 
-const spanStyles = 'block text-3xl xl:text-2xl sm:text-lg !leading-tight font-medium tracking-tighter uppercase text-center text-custom-gray'
+const spanStyles = 'block text-2xl xl:text-xl sm:text-base !leading-tight font-medium tracking-tighter uppercase text-center text-custom-gray'
 
 export default function Schema() {
   return (
@@ -84,10 +84,10 @@ function DesktopSchema() {
 
   return (
     <div className="p-7 xl:p-5 rounded-small shadow-card">
-      <div className={`grid ${gridConfig.base} gap-5`}>
+      <div className={`grid ${gridConfig.base} gap-7 xl:gap-5`}>
         <div className={`grid ${gridConfig.preview} place-items-center p-5 border-[3px] border-custom-gray rounded-small`}>{renderContent()}</div>
 
-        <div className={`grid ${gridConfig.schema} place-items-center p-5 xl:p-7 overflow-hidden shadow-card rounded-small `}>
+        <div className={`grid ${gridConfig.schema} place-items-center p-5 overflow-hidden shadow-card rounded-small`}>
           <SchemaSVG platform="desktop" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
         </div>
       </div>
