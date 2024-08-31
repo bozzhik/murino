@@ -2,6 +2,9 @@
   @apply !bg-white/30 sm:hidden;
 }
 
+.swiper-scrollbar {
+  @apply !bottom-2 !h-1.5;
+}
 .swiper-scrollbar-drag {
   @apply !bg-white;
 }
@@ -9,11 +12,9 @@
 .swiper-pagination {
   @apply hidden sm:block;
 }
-
 .swiper-pagination-bullet {
   @apply !bg-white !opacity-50;
 }
-
 .swiper-pagination-bullet-active {
   @apply !opacity-100;
 }
