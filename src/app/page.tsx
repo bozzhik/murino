@@ -6,7 +6,7 @@ import Gallery from '##/index/Gallery'
 import Schema from '##/index/Schema'
 import Prices from '##/index/Prices'
 import Contacts from '##/index/Contacts'
-import Footer from '#/Global/Footer'
+import Footer from '##/index/Footer'
 
 export default function Index() {
   return (
