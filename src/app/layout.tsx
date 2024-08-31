@@ -53,6 +53,7 @@ export const metadata: Metadata = {
 }
 
 import Header from '#/Global/Header/Header'
+import YandexMetrica from '#/Global/Analytics'
 
 export default function RootLayout({
   children,
@@ -64,6 +65,8 @@ export default function RootLayout({
       <body className={`${SuisseIntl.variable} font-sans tracking-tighter`}>
         <Header />
         {children}
+
+        {process.env.NODE_ENV === 'production' && <YandexMetrica />}
       </body>
     </html>
   )
