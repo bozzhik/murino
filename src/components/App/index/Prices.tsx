@@ -1,8 +1,8 @@
 'use client'
 
+import {cn} from '@/lib/utils'
 import {useState} from 'react'
-
-import Button, {buttonStyles} from '#/UI/Button'
+import Button, {buttonVariants} from '#/UI/Button'
 
 interface FieldButton {
   fieldSize: string
@@ -77,14 +77,12 @@ export default function Prices() {
 
   return (
     <section id="prices" className="pt-10 mt-10 sm:pt-0 sm:sm:mt-14">
-      <Button style="heading" classes="mx-3">
-        Сколько стоит аренда?
-      </Button>
+      <div className={cn(buttonVariants.base, 'bg-custom-green text-white rounded-smallest sm:py-4', 'mx-3')}>Сколько стоит аренда?</div>
 
       <div className="flex flex-col gap-10 xl:gap-5 sm:gap-7 mx-auto mt-5 p-7 sm:p-3 sm:w-[92%] w-fit shadow-card rounded-small">
         <div className="flex justify-between gap-4 sm:flex-col sm:gap-2">
           {fieldButtons.map((button) => (
-            <button key={button.fieldSize} className={`!px-12 xl:!px-7 sm:py-3 rounded-smallest border-[3px] border-transparent ${buttonStyles.default} ${selectedField === button.fieldSize ? 'bg-custom-gray text-white' : 'text-custom-gray !border-custom-gray'}`} title="switch" onClick={() => handleFieldSwitch(button.fieldSize)}>
+            <button key={button.fieldSize} className={`!px-12 xl:!px-7 sm:py-3 rounded-smallest border-[3px] border-transparent ${buttonVariants.base} ${selectedField === button.fieldSize ? 'bg-custom-gray text-white' : 'text-custom-gray !border-custom-gray'}`} title="switch" onClick={() => handleFieldSwitch(button.fieldSize)}>
               футбольное поле <span className="text-custom-95">{button.label}</span>
             </button>
           ))}
@@ -117,7 +115,7 @@ export default function Prices() {
         ))}
 
         {/* <button
-          className={`!text-white !bg-custom-green duration-200 hover:!bg-transparent hover:!ring-[3px] hover:!ring-custom-green hover:!text-custom-green ${buttonStyles.hero} ${buttonStyles.default}`}
+          className={`!text-white !bg-custom-green duration-200 hover:!bg-transparent hover:!ring-[3px] hover:!ring-custom-green hover:!text-custom-green ${buttonVariants.hero} ${buttonVariants.base}`}
           onClick={() => {
             if (selectedTime && selectedPrice) {
               alert(`Выбранный временной слот: ${selectedTime}, Стоимость: ${selectedPrice} | Футбольное поле: ${selectedField}`)
@@ -129,7 +127,7 @@ export default function Prices() {
           Забронировать
         </button> */}
 
-        <Button style="hero" link="#contacts" classes="!text-white !bg-custom-green duration-200 hover:!bg-transparent hover:!ring-[3px] hover:!ring-custom-green hover:!text-custom-green">
+        <Button variant="hero" href="#contacts" className="text-white bg-custom-green duration-200 hover:bg-transparent hover:ring-[3px] hover:ring-custom-green hover:text-custom-green">
           Забронировать
         </Button>
       </div>

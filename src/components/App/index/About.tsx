@@ -2,9 +2,9 @@
 
 import {useState} from 'react'
 import {isMobile} from '@bozzhik/is-mobile'
-
+import {cn} from '@/lib/utils'
 import Image from 'next/image'
-import Button from '#/UI/Button'
+import {buttonVariants} from '#/UI/Button'
 
 interface CardData {
   image: string
@@ -43,9 +43,8 @@ const Card: React.FC<CardProps> = ({image, hoverImage, mobileImage, isLastCard =
 export default function About() {
   return (
     <section id="about-us" className="pt-10 mt-10 sm:pt-0 sm:sm:mt-14">
-      <Button style="heading" classes="w-1/2 mx-auto sm:w-[96%]">
-        Почему нас выбирают?
-      </Button>
+      <div className={cn(buttonVariants.base, 'bg-custom-green text-white rounded-smallest sm:py-4', 'w-1/2 mx-auto sm:w-full sm:mx-3')}>Почему нас выбирают?</div>
+
       <div className="flex flex-col mx-3 mt-10 sm:mt-5 gap-14 sm:gap-5">
         <div className="grid justify-between grid-cols-2 gap-10 sm:gap-5 sm:grid-cols-1">
           {cardsData.slice(0, 2).map((card, index) => (

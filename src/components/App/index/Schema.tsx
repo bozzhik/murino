@@ -1,15 +1,13 @@
 'use client'
 
+import {cn} from '@/lib/utils'
 import {isMobile} from '@bozzhik/is-mobile'
-// const isMobile = true
-
 import {useState, useRef, useEffect} from 'react'
-
 import {motion} from 'framer-motion'
 
-import Image from 'next/image'
-import Button from '#/UI/Button'
+import {buttonVariants} from '#/UI/Button'
 import SchemaSVG from '##/index/SchemaSVG'
+import Image from 'next/image'
 
 import crossIcon from '%/schema/cross-icon.svg'
 import fieldsImage from '%/schema/fields.webp'
@@ -61,9 +59,9 @@ function DesktopSchema() {
     return (
       <motion.div className={`flex flex-col h-full gap-5 ${classes}`} initial={{opacity: 0}} animate={{opacity: hoveredElement ? 1 : 0}} transition={{duration: 0.25}}>
         <Image loading={'eager'} quality={100} className={imageStyles} src={imageSrc} alt={altText} />
-        <Button style="simple">
+        <button className={buttonVariants.base}>
           <span dangerouslySetInnerHTML={{__html: altText}}></span>
-        </Button>
+        </button>
       </motion.div>
     )
   }
@@ -100,9 +98,7 @@ function DesktopSchema() {
 
   return (
     <section id="schema" data-section="desktop" className="pt-10 mt-10 sm:pt-0 sm:sm:mt-14">
-      <Button style="heading" classes="mx-3">
-        Cхема шатра
-      </Button>
+      <div className={cn(buttonVariants.base, 'bg-custom-green text-white rounded-smallest sm:py-4', 'w-1/2 mx-auto sm:w-full sm:mx-3')}>Cхема шатра</div>
 
       <div className="mx-3 mt-5 shadow-card p-7 rounded-small">
         <div className="grid grid-cols-7 gap-5">
