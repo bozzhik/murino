@@ -1,133 +1,82 @@
 'use client'
 
+import {cn} from '@/lib/utils'
 import {useState} from 'react'
-import Button, {buttonVariants} from '#/UI/Button'
 import Heading from '#/UI/Heading'
-
-interface FieldButton {
-  fieldSize: string
-  label: string
-}
-
-const generateFieldButtons = (sizes: string[]): FieldButton[] => {
-  return sizes.map((size) => ({fieldSize: size, label: size}))
-}
+import Button from '#/UI/Button'
 
 const fieldSizes = ['20x40', '40x70']
-const fieldButtons: FieldButton[] = generateFieldButtons(fieldSizes)
+const fieldButtons = fieldSizes.map((size) => ({size}))
 
-interface ScheduleItem {
-  time: string
-  price: string
-}
-
-interface PriceCategory {
-  title: string
-  schedule: ScheduleItem[]
-}
-
-const priceData: Record<string, Record<string, PriceCategory>> = {
+const priceData = {
   '20x40': {
-    1: {
+    workdays: {
       title: 'БУДНИЕ ДНИ',
       schedule: [
-        {time: '07:00 - 14:00', price: '3000 РУБ'},
-        {time: '14:00 - 17:00', price: '4300 РУБ'},
-        {time: '17:00 - 23:00', price: '5500 РУБ'},
-        {time: '23:00 - 07:00', price: '3500 РУБ'},
+        {time: '07:00 - 14:00', price: '3000'},
+        {time: '14:00 - 17:00', price: '4300'},
+        {time: '17:00 - 23:00', price: '5500'},
+        {time: '23:00 - 07:00', price: '3500'},
       ],
     },
-    2: {
+    weekends: {
       title: 'ВЫХОДНЫЕ ДНИ',
-      schedule: [{time: 'Весь день', price: '4000 РУБ'}],
+      schedule: [{time: 'Весь день', price: '4000'}],
     },
   },
   '40x70': {
-    1: {
+    workdays: {
       title: 'БУДНИЕ ДНИ',
       schedule: [
-        {time: '07:00 - 14:00', price: '9000 РУБ'},
-        {time: '14:00 - 17:00', price: '12900 РУБ'},
-        {time: '17:00 - 23:00', price: '16500 РУБ'},
-        {time: '23:00 - 07:00', price: '10500 РУБ'},
+        {time: '07:00 - 14:00', price: '9000'},
+        {time: '14:00 - 17:00', price: '12900'},
+        {time: '17:00 - 23:00', price: '16500'},
+        {time: '23:00 - 07:00', price: '10500'},
       ],
     },
-    2: {
+    weekends: {
       title: 'ВЫХОДНЫЕ ДНИ',
-      schedule: [{time: 'Весь день', price: '12000 РУБ'}],
+      schedule: [{time: 'Весь день', price: '12000'}],
     },
   },
 }
 
 export default function Prices() {
   const [selectedField, setSelectedField] = useState('20x40')
-  const [selectedTime, setSelectedTime] = useState('')
-  const [selectedPrice, setSelectedPrice] = useState('')
-
-  const handleFieldSwitch = (fieldSize: string) => {
-    setSelectedField(fieldSize)
-    setSelectedTime('')
-    setSelectedPrice('')
-  }
-
-  const handleTimeSelection = (time: string, price: string) => {
-    setSelectedTime(time)
-    setSelectedPrice(price)
-  }
 
   return (
-    <section id="prices" className="pt-10 mt-10 sm:pt-0 sm:sm:mt-14">
-      <Heading size="full" text={'Сколько стоит аренда?'} />
+    <section data-section="prices-index" id="prices" className={cn('scroll-m-10', 'space-y-10 xl:space-y-7 sm:space-y-5')}>
+      <Heading size="full" text="Сколько стоит аренда?" />
 
-      <div className="flex flex-col gap-10 xl:gap-5 sm:gap-7 mx-auto mt-5 p-7 sm:p-3 sm:w-[92%] w-fit shadow-card rounded-small">
-        <div className="flex justify-between gap-4 sm:flex-col sm:gap-2">
-          {fieldButtons.map((button) => (
-            <button key={button.fieldSize} className={`!px-12 xl:!px-7 sm:py-3 rounded-smallest border-[3px] border-transparent ${buttonVariants.base} ${selectedField === button.fieldSize ? 'bg-custom-gray text-white' : 'text-custom-gray !border-custom-gray'}`} title="switch" onClick={() => handleFieldSwitch(button.fieldSize)}>
-              футбольное поле <span className="text-custom-95">{button.label}</span>
+      <div className="flex flex-col gap-7 sm:gap-5 mx-auto p-5 xl:p-4 sm:p-2.5 w-fit sm:w-full shadow-card rounded-small">
+        <div className="flex justify-between gap-4 sm:gap-2">
+          {fieldButtons.map(({size}) => (
+            <button key={size} onClick={() => setSelectedField(size)} className={cn('px-8 xl:px-6 sm:px-0 py-4 sm:py-2.5 inline-flex sm:justify-center gap-2 sm:gap-1.5 sm:w-full', 'text-2xl xl:text-xl sm:text-lg uppercase font-book tracking-tighter', 'duration-200 rounded-smallest border-[3px] border-transparent', selectedField === size ? 'bg-custom-gray text-white' : 'text-custom-gray !border-custom-gray')} title="switch">
+              <span>
+                <span className="sm:hidden">футбольное</span> поле
+              </span>
+
+              <span className="text-custom-95">{size}</span>
             </button>
           ))}
         </div>
 
-        {Object.values(priceData[selectedField]).map((category: PriceCategory, index: number) => (
-          <div key={index} className="flex flex-col gap-7 xl:gap-5 sm:gap-3">
-            <h1 className="text-3xl font-medium text-center uppercase xl:text-xl text-custom-gray">{category.title}</h1>
+        {Object.values(priceData[selectedField]).map(({title, schedule}, index) => (
+          <div key={index} className="flex flex-col gap-4 xl:gap-3 sm:gap-1.5">
+            <h1 className="text-2xl xl:text-xl sm:text-lg font-medium text-center uppercase text-custom-gray">{title}</h1>
 
-            <div className="flex flex-col gap-5 xl:gap-3">
-              {category.schedule.map((item: ScheduleItem, itemIndex: number) => (
-                <div key={itemIndex} className="flex items-center text-[38px] xl:text-2xl justify-between text-custom-gray">
-                  <button
-                    className={`sm:text-base w-1/2 py-1 xl:py-2 sm:px-2 duration-200 bg-custom-e4 rounded-smallest ${selectedTime === item.time ? '' : ''}`}
-                    onClick={() => {
-                      handleTimeSelection(item.time, item.price)
-                      console.log(`Выбранный временной слот: ${item.time}, Стоимость: ${item.price} | Футбольное поле: ${selectedField}`)
-                    }}
-                  >
-                    {item.time}
-                  </button>
-                  <h1 className="sm:text-lg">
-                    {item.price}
-                    <span className="text-custom-95">/ЧАС</span>
-                  </h1>
-                </div>
-              ))}
-            </div>
+            {schedule.map(({time, price}, itemIndex) => (
+              <div key={itemIndex} className="flex items-center justify-between text-3xl xl:text-2xl sm:text-lg !leading-tight font-book text-custom-gray">
+                <div className="text-center w-1/2 py-4 xl:py-3 sm:py-2.5 sm:px-2 duration-200 bg-custom-e4 text-custom-gray rounded-smallest">{time}</div>
+                <span>
+                  {price} ₽<span className="text-custom-95">/ЧАС</span>
+                </span>
+              </div>
+            ))}
           </div>
         ))}
 
-        {/* <button
-          className={`!text-white !bg-custom-green duration-200 hover:!bg-transparent hover:!ring-[3px] hover:!ring-custom-green hover:!text-custom-green ${buttonVariants.hero} ${buttonVariants.base}`}
-          onClick={() => {
-            if (selectedTime && selectedPrice) {
-              alert(`Выбранный временной слот: ${selectedTime}, Стоимость: ${selectedPrice} | Футбольное поле: ${selectedField}`)
-            } else {
-              alert('Пожалуйста, выберите временной слот.')
-            }
-          }}
-        >
-          Забронировать
-        </button> */}
-
-        <Button variant="hero" href="#contacts" className="text-white bg-custom-green duration-200 hover:bg-transparent hover:ring-[3px] hover:ring-custom-green hover:text-custom-green">
+        <Button variant="hero" href="#" className="text-white bg-custom-green duration-200 hover:bg-custom-gray">
           Забронировать
         </Button>
       </div>
