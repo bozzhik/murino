@@ -1,10 +1,11 @@
 'use client'
 
-import {useState} from 'react'
-import {isMobile} from '@bozzhik/is-mobile'
 import {cn} from '@/lib/utils'
+import {isMobile} from '@bozzhik/is-mobile'
+import {useState} from 'react'
+
 import Image from 'next/image'
-import {buttonVariants} from '#/UI/Button'
+import Heading from '#/UI/Heading'
 
 const cardsData = Array.from({length: 3}, (_, index) => ({
   image: require(`%/about/${index + 1}.webp`).default,
@@ -31,7 +32,7 @@ const Card = ({image, hoverImage, mobileImage, isLastCard = false}) => {
 export default function About() {
   return (
     <section data-section="about-index" id="about" className={cn('scroll-m-10', 'space-y-10 xl:space-y-7 sm:space-y-5')}>
-      <div className={cn(buttonVariants.base, 'bg-custom-green text-white rounded-smallest sm:py-4', 'w-[60%] mx-auto sm:w-auto sm:mx-3')}>Почему нас выбирают?</div>
+      <Heading text={'Почему нас выбирают?'} />
 
       <div className="flex flex-col gap-10 xl:gap-7 sm:gap-3.5">
         <div className="grid justify-between grid-cols-2 sm:grid-cols-1 gap-10 xl:gap-7 sm:gap-3.5">

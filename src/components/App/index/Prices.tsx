@@ -1,8 +1,8 @@
 'use client'
 
-import {cn} from '@/lib/utils'
 import {useState} from 'react'
 import Button, {buttonVariants} from '#/UI/Button'
+import Heading from '#/UI/Heading'
 
 interface FieldButton {
   fieldSize: string
@@ -77,7 +77,7 @@ export default function Prices() {
 
   return (
     <section id="prices" className="pt-10 mt-10 sm:pt-0 sm:sm:mt-14">
-      <div className={cn(buttonVariants.base, 'bg-custom-green text-white rounded-smallest sm:py-4', 'mx-3')}>Сколько стоит аренда?</div>
+      <Heading size="full" text={'Сколько стоит аренда?'} />
 
       <div className="flex flex-col gap-10 xl:gap-5 sm:gap-7 mx-auto mt-5 p-7 sm:p-3 sm:w-[92%] w-fit shadow-card rounded-small">
         <div className="flex justify-between gap-4 sm:flex-col sm:gap-2">
