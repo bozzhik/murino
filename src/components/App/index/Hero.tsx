@@ -10,6 +10,8 @@ import TelImage from '%/socials/tel.svg'
 import VkImage from '%/socials/vk.svg'
 import TgImage from '%/socials/tg.svg'
 
+const screenHeight = 'h-screen !h-svh'
+
 const iconsData = [
   {link: linksData.tel.href, image: TelImage},
   {link: linksData.vk.href, image: VkImage},
@@ -28,11 +30,9 @@ function HeroSocials() {
   )
 }
 
-const screenHeight = 'h-screen !h-svh'
-
 export default function Hero() {
   return (
-    <section id="hero" className={`relative ${screenHeight}`}>
+    <section data-section="hero-index" id="hero" className={`relative ${screenHeight}`}>
       <div className="absolute inset-0 grid place-items-center s-full -z-10">
         <Image priority quality={100} className="xl:w-[30%] sm:w-[70%] mt-5 xl:mt-2 sm:mt-10 object-cover" src={HeroText} alt="" />
       </div>
