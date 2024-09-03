@@ -5,6 +5,7 @@ import {ArrowLeft} from 'lucide-react'
 
 import Heading from '#/UI/Heading'
 import {ModuleButton} from '##/reservation/ModuleButton'
+import Content from '##/reservation/ModuleContent'
 
 export default function ReservationModule() {
   const [step, setStep] = useState(1)
@@ -22,7 +23,7 @@ export default function ReservationModule() {
     {
       title: 'Выберите размер поля',
       content: (
-        <>
+        <Content>
           <ModuleButton
             onClick={() => {
               setFieldSize('20x40')
@@ -39,66 +40,74 @@ export default function ReservationModule() {
           >
             45x70
           </ModuleButton>
-        </>
+        </Content>
       ),
     },
     {
       title: 'Выберите количество полей',
-      content: [1, 2, 3].map((count) => (
-        <ModuleButton
-          key={count}
-          onClick={() => {
-            setFieldCount(count)
-            goNext()
-          }}
-        >
-          {count}
-        </ModuleButton>
-      )),
+      content: (
+        <Content>
+          {[1, 2, 3].map((count) => (
+            <ModuleButton
+              key={count}
+              onClick={() => {
+                setFieldCount(count)
+                goNext()
+              }}
+            >
+              {count}
+            </ModuleButton>
+          ))}
+        </Content>
+      ),
     },
     {
       title: 'Выберите продолжительность игры',
-      content: [120, 180, 240].map((d) => (
-        <ModuleButton
-          key={d}
-          onClick={() => {
-            setDuration(d)
-            goNext()
-          }}
-        >
-          {d / 60} ЧАСА
-        </ModuleButton>
-      )),
+      content: (
+        <Content>
+          {[120, 180, 240].map((d) => (
+            <ModuleButton
+              key={d}
+              onClick={() => {
+                setDuration(d)
+                goNext()
+              }}
+            >
+              {d / 60} ЧАСА
+            </ModuleButton>
+          ))}
+        </Content>
+      ),
     },
     {
       title: 'Выберите дату',
       content: (
-        <>
+        <Content>
           <input className="px-2" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           <ModuleButton onClick={goNext}>Далее</ModuleButton>
-        </>
+        </Content>
       ),
     },
     {
       title: 'Выберите временной интервал',
       content: (
-        <>
+        <Content>
           <input className="px-2" type="time" value={time} onChange={(e) => setTime(e.target.value)} />
           <ModuleButton onClick={goNext}>Далее</ModuleButton>
-        </>
+        </Content>
       ),
     },
     {
       title: 'Ввод персональных данных',
       content: (
-        <>
+        <Content direction="col">
           <input type="text" placeholder="Ваше Имя" value={personalInfo.name} onChange={(e) => setPersonalInfo({...personalInfo, name: e.target.value})} />
           <label>
             <input type="checkbox" checked={personalInfo.consent} onChange={(e) => setPersonalInfo({...personalInfo, consent: e.target.checked})} />
             Согласие на обработку персональных данных
           </label>
           <ModuleButton onClick={goNext}>Далее</ModuleButton>
-        </>
+        </Content>
       ),
     },
     {
