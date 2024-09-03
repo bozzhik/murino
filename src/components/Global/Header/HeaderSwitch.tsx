@@ -10,7 +10,7 @@ const links = [
   {title: 'О нас', link: '#about', mobile: false},
   {title: 'Цены', link: '#prices', mobile: true},
   {title: 'Контакты', link: '#contacts', mobile: false},
-  {title: 'Забронировать', link: '#prices', mobile: false},
+  {title: 'Забронировать', link: '/reservation', mobile: false},
 ]
 
 function HeaderLink({link, active, className, children}: {link: string; active?: boolean; children: React.ReactNode; className?: string}) {
@@ -34,7 +34,7 @@ export default function HeaderSwitch({className}) {
       const scrollPosition = window.scrollY
       const offsetBeforeHighlight = 200
 
-      links.forEach((link) => {
+      links.slice(0, -1).forEach((link) => {
         const section = document.querySelector(link.link) as HTMLElement
         if (section) {
           const sectionTop = section.offsetTop - offsetBeforeHighlight

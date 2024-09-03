@@ -38,7 +38,7 @@ export default function Hero() {
       </div>
 
       <div className="flex items-end justify-between w-full h-full px-16 py-12 sm:justify-center sm:px-3 sm:py-5">
-        <Button variant="hero" href="#contacts" className="sm:hidden">
+        <Button variant="hero" href="/reservation" className="sm:hidden">
           Забронировать
         </Button>
 

@@ -76,7 +76,7 @@ export default function Prices() {
           </div>
         ))}
 
-        <Button variant="hero" href="#" className="text-white bg-custom-green duration-200 hover:bg-custom-gray">
+        <Button variant="hero" href="/reservation" className="text-white bg-custom-green duration-200 hover:bg-custom-gray">
           Забронировать
         </Button>
       </div>
