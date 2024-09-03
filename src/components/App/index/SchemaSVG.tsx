@@ -38,10 +38,10 @@ export default function SchemaSVG({platform, onMouseEnter, onMouseLeave, onMobil
 
   return (
     <svg ref={svgRef} className="w-full" viewBox="0 0 814 614" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g id="fields" {...(isDesktop && {onMouseEnter: () => onMouseEnter?.('fields'), onMouseLeave})} {...(isMobile && {onClick: () => onMobileTouch?.('fields')})}>
+      <g id="fields">
         <rect x="423.5" y="1.5" width="389" height="611" rx="13.5" fill="#fff" />
         <rect x="423.5" y="1.5" width="389" height="611" rx="13.5" stroke="#454545" strokeWidth="3" />
-        <g id="field1" className="group">
+        <g id="field1" className="group" {...(isDesktop && {onMouseEnter: () => onMouseEnter?.('field_one'), onMouseLeave})} {...(isMobile && {onClick: () => onMobileTouch?.('field_one')})}>
           <rect x="443.5" y="24" width="349" height="172" rx="8.5" fill={colorArea} className="HOVERABLE_AREA" />
           <rect x="443.5" y="24" width="349" height="172" rx="8.5" stroke="#454545" strokeWidth="3" />
           <path id="Rectangle 85" fill="#454545" d="M617 22.5h3v175h-3z" />
@@ -49,7 +49,7 @@ export default function SchemaSVG({platform, onMouseEnter, onMouseLeave, onMobil
           <path id="Ellipse 2" d="M443.5 62.023a48.498 48.498 0 0 1 47 48.477 48.512 48.512 0 0 1-14.205 34.295 48.512 48.512 0 0 1-32.795 14.182V62.023Z" className="HOVERABLE_FIELD_ZONE" stroke="#454545" strokeWidth="3" />
           <path id="Ellipse 3" d="M792.5 158.977a48.512 48.512 0 0 1-32.795-14.182A48.512 48.512 0 0 1 745.5 110.5a48.488 48.488 0 0 1 14.205-34.295A48.51 48.51 0 0 1 792.5 62.023v96.954Z" className="HOVERABLE_FIELD_ZONE" stroke="#454545" strokeWidth="3" />
         </g>
-        <g id="field2" className="group">
+        <g id="field2" className="group" {...(isDesktop && {onMouseEnter: () => onMouseEnter?.('field_two'), onMouseLeave})} {...(isMobile && {onClick: () => onMobileTouch?.('field_two')})}>
           <rect x="443.5" y="221" width="349" height="172" rx="8.5" fill={colorArea} className="HOVERABLE_AREA" />
           <rect x="443.5" y="221" width="349" height="172" rx="8.5" stroke="#454545" strokeWidth="3" />
           <path id="Rectangle 85_2" fill="#454545" d="M617 219.5h3v175h-3z" />
@@ -57,7 +57,7 @@ export default function SchemaSVG({platform, onMouseEnter, onMouseLeave, onMobil
           <path id="Ellipse 2_2" d="M443.5 259.023a48.512 48.512 0 0 1 32.795 14.182A48.512 48.512 0 0 1 490.5 307.5a48.512 48.512 0 0 1-14.205 34.295 48.512 48.512 0 0 1-32.795 14.182v-96.954Z" className="HOVERABLE_FIELD_ZONE" stroke="#454545" strokeWidth="3" />
           <path id="Ellipse 3_2" d="M792.5 355.977a48.512 48.512 0 0 1-32.795-14.182A48.512 48.512 0 0 1 745.5 307.5a48.512 48.512 0 0 1 14.205-34.295 48.512 48.512 0 0 1 32.795-14.182v96.954Z" className="HOVERABLE_FIELD_ZONE" stroke="#454545" strokeWidth="3" />
         </g>
-        <g id="field3" className="group">
+        <g id="field3" className="group" {...(isDesktop && {onMouseEnter: () => onMouseEnter?.('field_three'), onMouseLeave})} {...(isMobile && {onClick: () => onMobileTouch?.('field_three')})}>
           <rect x="443.5" y="418" width="349" height="172" rx="8.5" fill={colorArea} className="HOVERABLE_AREA" />
           <rect x="443.5" y="418" width="349" height="172" rx="8.5" stroke="#454545" strokeWidth="3" />
           <path id="Rectangle 85_3" fill="#454545" d="M617 416.5h3v175h-3z" />

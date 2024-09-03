@@ -10,16 +10,19 @@ import Image from 'next/image'
 import Heading from '#/UI/Heading'
 import SchemaSVG from '##/index/SchemaSVG'
 
-import fieldsImage from '%/schema/fields.webp'
-import parkingImage from '%/schema/parking.webp'
+import fieldOneImage from '%/schema/field1.jpg'
+import fieldTwoImage from '%/schema/field2.jpg'
+import fieldThreeImage from '%/schema/field3.jpg'
+import parkingImage from '%/schema/parking.jpg'
 // import canteenImage from '%/schema/none.webp'
-import toiletsImage from '%/schema/toilets.webp'
-import showersImage from '%/schema/showers.webp'
+import toiletsImage from '%/schema/toilets.jpg'
+import showersImage from '%/schema/showers.jpg'
 
 const contentData = {
-  fields: {image: fieldsImage, text: 'Поля с <span class="text-custom-green">новым</span> искусственным покрытием'},
+  field_one: {image: fieldOneImage, text: 'Поле с <span class="text-custom-green">новым</span> искусственным покрытием'},
+  field_two: {image: fieldTwoImage, text: 'Поле с <span class="text-custom-green">новым</span> искусственным покрытием'},
+  field_three: {image: fieldThreeImage, text: 'Поле с <span class="text-custom-green">новым</span> искусственным покрытием'},
   parking: {image: parkingImage, text: 'Парковка на <span class="text-custom-green">300</span> мест'},
-  cloakroom: {image: showersImage, text: 'Дополнительная раздевалка'},
   // canteen: {image: canteenImage, text: 'Столовая <span class="text-custom-green">(скоро будет готова)</span>'},
   toilets: {image: toiletsImage, text: 'Туалеты'},
   showers: {image: showersImage, text: '<span class="text-custom-green">ШЕСТЬ</span> раздевалок с душевыми и теплым полом'},
