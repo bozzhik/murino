@@ -8,7 +8,7 @@ export default function ReservPage() {
   return (
     <main className={cn('my-5 sm:mx-3 flex flex-col items-center gap-10 sm:gap-7')}>
       <Link href="/" className="flex gap-1 tracking-tight px-3 py-1.5 text-white uppercase rounded-md bg-custom-gray group hover:bg-[#555] duration-300">
-        <ArrowDownLeft className="duration-300 group-hover:rotate-45" />
+        <ArrowDownLeft className="duration-300 rotate-90 group-hover:rotate-[135deg]" />
         на главную
       </Link>
 

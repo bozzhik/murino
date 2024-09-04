@@ -19,6 +19,33 @@ export default function ReservationModule() {
   const goBack = () => setStep(step > 1 ? step - 1 : step)
   const goNext = () => setStep(step < 7 ? step + 1 : step)
 
+  const dataFields = {
+    size: {
+      label: 'Размер поля',
+      data: fieldSize,
+    },
+    count: {
+      label: 'Количество полей',
+      data: fieldCount,
+    },
+    duration: {
+      label: 'Длительность',
+      data: duration / 60,
+    },
+    date: {
+      label: 'Дата',
+      data: date,
+    },
+    time: {
+      label: 'Время',
+      data: time,
+    },
+    info: {
+      label: 'Плательщик',
+      data: personalInfo.name,
+    },
+  }
+
   const steps = [
     {
       title: 'Выберите размер поля',
@@ -34,11 +61,11 @@ export default function ReservationModule() {
           </ModuleButton>
           <ModuleButton
             onClick={() => {
-              setFieldSize('45x70')
+              setFieldSize('40x70')
               goNext()
             }}
           >
-            45x70
+            40x70
           </ModuleButton>
         </Content>
       ),
@@ -111,13 +138,27 @@ export default function ReservationModule() {
       ),
     },
     {
-      title: 'Оплата',
-      content: <ModuleButton onClick={() => alert('Redirecting to payment...')}>Перейти к оплате</ModuleButton>,
+      title: 'Детали бронирования',
+      content: (
+        <Content direction="col" className="gap-4 xl:gap-3 sm:gap-3">
+          <div className="p-5 sm:p-4 space-y-5 sm:space-y-4 shadow-card rounded-small sm:rounded-smallest">
+            {Object.entries(dataFields).map(([key, {label, data}]) => (
+              <div key={key} className="flex items-center justify-between text-3xl xl:text-2xl sm:text-lg !leading-none font-book text-custom-gray">
+                <span>{label}:</span>
+
+                <div className="text-center w-1/2 sm:w-1/3 text-custom-95 rounded-smallest">{data}</div>
+              </div>
+            ))}
+          </div>
+
+          <ModuleButton onClick={() => alert('Redirecting to payment...')}>Перейти к оплате</ModuleButton>
+        </Content>
+      ),
     },
   ]
 
   return (
-    <section className="w-[40%] sm:w-full p-3 sm:p-2.5 space-y-5 shadow-card rounded-small">
+    <section data-section="form-reservation" className="w-[40%] sm:w-full p-3 sm:p-2.5 space-y-5 shadow-card rounded-small">
       {step > 1 ? (
         <div className="flex justify-between gap-2">
           <ModuleButton onClick={goBack} className="grid px-6 xl:px-4 !py-0 w-fit place-items-center">
