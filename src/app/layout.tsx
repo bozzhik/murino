@@ -42,14 +42,6 @@ export const metadata: Metadata = {
     siteName: 'МУРИНО АРЕНА',
     images: 'https://murino-arena.ru/og.jpg',
   },
-  robots: {
-    index: true,
-    follow: true,
-    noarchive: true,
-    nosnippet: true,
-    noimageindex: true,
-    nocache: true,
-  },
 }
 
 import Header from '#/Global/Header/Header'
