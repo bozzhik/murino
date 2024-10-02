@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "explorer http://localhost:2000 & next dev -p 2000",
     "dev:host": "explorer http://192.168.0.16:2000 & next dev -p 2000 -H 192.168.0.16",
+    "db:seed": "npx tsx src/db/seeds.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
